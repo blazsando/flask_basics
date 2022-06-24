@@ -7,15 +7,15 @@
 <body>
 <form action="#" method="post">
     <label> Input:
-        <input type="text" name="input" />
+        <input type="text" name="input"/>
     </label>
     <button type="submit">Submit</button>
-    {% if 'data' in session %}
-        {% for item in session.data %}
-            <p>{{ item }}</p>
-        {% endfor %}
-    {% endif %}
 </form>
+{% if 'data' in session %}
+    {% for item in session.data %}
+        <p>{{ item }}</p>
+    {% endfor %}
+{% endif %}
 
 </body>
 </html>

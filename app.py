@@ -24,9 +24,7 @@ def hello_put():
 @app.route('/without-redirect', methods=['GET', 'POST'])
 def post_without_redirect():
     if request.method == 'POST':
-        data = session.get('data', [])
-        data.append(request.form.get('input'))
-        session['data'] = data
+        append_to_data(request.form.get('input'))
     return render_template('form-with-session.html')
 
 
@@ -37,9 +35,7 @@ def post_with_redirect_get():
 
 @app.route('/with-redirect', methods=['POST'])
 def post_with_redirect_post():
-    data = session.get('data', [])
-    data.append(request.form.get('input'))
-    session['data'] = data
+    append_to_data(request.form.get('input'))
     return redirect(url_for('post_with_redirect_get'))
 
 
@@ -52,6 +48,12 @@ def route_with_401_code():
 def json_response():
     json = {'key1': 'value1', 'key2': 'value2'}
     return jsonify(json)
+
+
+def append_to_data(item):
+    data = session.get('data', [])
+    data.append(item)
+    session['data'] = data
 
 
 if __name__ == '__main__':
