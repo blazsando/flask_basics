@@ -47,6 +47,7 @@ def route_with_401_code():
 @app.route('/json')
 def json_response():
     json = {'key1': 'value1', 'key2': 'value2'}
+    print('valami')
     return jsonify(json)
 
 
