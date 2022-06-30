@@ -54,7 +54,6 @@ def json_response():
 def append_to_data(item):
     data = session.get('data', [])
     data.append(item)
-    print('valami feature')
     session['data'] = data
 
 
