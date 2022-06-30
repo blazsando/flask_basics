@@ -54,6 +54,7 @@ def json_response():
 def append_to_data(item):
     data = session.get('data', [])
     data.append(item)
+    print('masik feature')
     session['data'] = data
 
 
